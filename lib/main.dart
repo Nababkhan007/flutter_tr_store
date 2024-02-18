@@ -1,4 +1,9 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:tr_store/route/app_page.dart';
+import 'package:tr_store/view/home/home_view.dart';
+import 'package:tr_store/common/core/binding.dart';
+import 'package:tr_store/common/theme/app_themes.dart';
 
 void main() {
   runApp(const TRStore());
@@ -9,20 +14,13 @@ class TRStore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "TR Store",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("TR Store"),
-        ),
-        body: const Center(),
-      ),
+      initialBinding: Binding(),
+      initialRoute: AppPage.initial,
+      getPages: AppPage.routes,
+      theme: AppTheme.defaultTheme,
+      home: const HomeView(),
     );
   }
 }
