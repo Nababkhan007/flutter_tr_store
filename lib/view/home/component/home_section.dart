@@ -28,7 +28,10 @@ class HomeSection extends GetWidget<HomeViewModel> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: AppDefaults.padding, vertical: 10.0),
-                  child: HomeCustomItem(post: controller.posts[index]),
+                  child: HomeCustomItem(
+                    post: controller.posts[index],
+                    controller: controller,
+                  ),
                 ),
                 controller.isLoading.value ? const CustomProgressBar() : Container(),
               ],

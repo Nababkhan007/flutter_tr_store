@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:tr_store/route/app_route.dart';
 import 'package:tr_store/common/util/app_util.dart';
 import 'package:tr_store/common/api/api_constants.dart';
 import 'package:tr_store/model/network/post_model.dart';
@@ -14,6 +15,8 @@ class HomeViewModel extends GetxController {
     _getPosts();
     super.onInit();
   }
+
+  void postItemOnTap(PostModel post) => Get.toNamed(AppRoute.postDetail, arguments: {"post": post});
 
   Future<void> _getPosts() async {
     isLoading.value = true;

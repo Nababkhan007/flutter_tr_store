@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:tr_store/model/network/post_model.dart';
 import 'package:tr_store/common/constant/constants.dart';
 import 'package:tr_store/common/constant/app_texts.dart';
+import 'package:tr_store/view_model/home_view_model.dart';
 import 'package:tr_store/common/widget/network_image_loader.dart';
 
 class HomeCustomItem extends StatelessWidget {
   final PostModel post;
+  final HomeViewModel controller;
 
-  const HomeCustomItem({Key? key, required this.post}) : super(key: key);
+  const HomeCustomItem({
+    Key? key,
+    required this.post,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +21,7 @@ class HomeCustomItem extends StatelessWidget {
       color: AppColors.scaffoldBackground,
       borderRadius: AppDefaults.borderRadius,
       child: InkWell(
-        onTap: () {
-          // navigate page
-        },
+        onTap: () => controller.postItemOnTap(post),
         borderRadius: AppDefaults.borderRadius,
         child: Container(
           padding: const EdgeInsets.all(AppDefaults.padding),
