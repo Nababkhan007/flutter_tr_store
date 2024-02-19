@@ -11,6 +11,7 @@ class PostModel {
   final String? image;
   final String? thumbnail;
   final int? userId;
+  final int? quantity;
 
   PostModel({
     this.id,
@@ -19,6 +20,7 @@ class PostModel {
     this.image,
     this.thumbnail,
     this.userId,
+    this.quantity,
   });
 
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
@@ -28,6 +30,7 @@ class PostModel {
         image: json["image"] ?? "",
         thumbnail: json["thumbnail"] ?? "",
         userId: json["userId"] ?? 0,
+        quantity: json["quantity"] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,5 +40,6 @@ class PostModel {
         "image": image ?? "",
         "thumbnail": thumbnail ?? "",
         "userId": userId ?? 0,
+        "quantity": quantity ?? 0,
       };
 }

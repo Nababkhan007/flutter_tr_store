@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tr_store/common/constant/app_colors.dart';
+import 'package:tr_store/common/constant/constants.dart';
 import 'package:tr_store/view_model/post_detail_view_model.dart';
 import 'package:tr_store/common/widget/custom_slider_indicator.dart';
 import 'package:tr_store/view/post_detail/component/post_detail_app_bar.dart';
@@ -49,6 +49,17 @@ class PostDetailSection extends GetWidget<PostDetailViewModel> {
             ),
             const PostDetailScrollableSheet(),
           ],
+        ),
+        bottomNavigationBar: Padding(
+          padding: EdgeInsets.only(
+            left: size.width * 0.15,
+            right: size.width * 0.15,
+            bottom: AppDefaults.padding * 2,
+          ),
+          child: ElevatedButton(
+            onPressed: () => controller.addCartItem(),
+            child: const Text("Add to Cart"),
+          ),
         ),
       ),
     );

@@ -1,8 +1,11 @@
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:tr_store/common/constant/app_texts.dart';
 import 'package:tr_store/common/constant/app_colors.dart';
+import 'package:tr_store/view_model/post_detail_view_model.dart';
 import 'package:tr_store/view/post_detail/component/post_detail_description_section.dart';
 
-class PostDetailScrollableSheet extends StatelessWidget {
+class PostDetailScrollableSheet extends GetWidget<PostDetailViewModel> {
   const PostDetailScrollableSheet({Key? key}) : super(key: key);
 
   @override
@@ -12,9 +15,9 @@ class PostDetailScrollableSheet extends StatelessWidget {
       initialChildSize: .5,
       maxChildSize: .6,
       minChildSize: .45,
-      builder: (context, controller) {
+      builder: (context, scrollController) {
         return SingleChildScrollView(
-          controller: controller,
+          controller: scrollController,
           scrollDirection: Axis.vertical,
           child: Stack(
             children: [
@@ -26,11 +29,11 @@ class PostDetailScrollableSheet extends StatelessWidget {
                     horizontal: padding,
                   ),
                   child: FloatingActionButton(
+                    onPressed: null,
                     backgroundColor: AppColors.primary,
-                    onPressed: () {},
-                    child: const Icon(
-                      Icons.shopping_bag,
-                      color: AppColors.white,
+                    child: Text(
+                      "${AppTexts.taka}${controller.post.userId}",
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: AppColors.white),
                     ),
                   ),
                 ),

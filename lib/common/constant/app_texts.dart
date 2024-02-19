@@ -10,4 +10,7 @@ class AppTexts {
   static const String warning = "Warning";
   static const String error = "Error";
   static const String taka = "৳";
+  static const String addedCartItem = "Added cart item successfully!";
+  static const String updatedCartItem = "Updated cart item successfully!";
+  static const String deletedCartItem = "Deleted cart item successfully!";
 }
