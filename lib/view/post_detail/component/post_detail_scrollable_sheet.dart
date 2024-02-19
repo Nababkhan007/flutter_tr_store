@@ -31,9 +31,11 @@ class PostDetailScrollableSheet extends GetWidget<PostDetailViewModel> {
                   child: FloatingActionButton(
                     onPressed: null,
                     backgroundColor: AppColors.primary,
-                    child: Text(
-                      "${AppTexts.taka}${controller.post.userId}",
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: AppColors.white),
+                    child: Obx(
+                      () => Text(
+                        "${AppTexts.taka}${controller.post.value.userId}",
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: AppColors.white),
+                      ),
                     ),
                   ),
                 ),

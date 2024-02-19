@@ -36,6 +36,5 @@ class CartViewModel extends GetxController {
     posts.value = postModelFromJson(jsonEncode(data));
     cartItemCount.value = posts.length;
     isLoading.value = false;
-    print("${posts[3].id} ${posts[3].quantity} =========== posts ===========");
   }
 }

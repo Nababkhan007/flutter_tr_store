@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 import 'package:tr_store/common/constant/app_colors.dart';
 import 'package:tr_store/view_model/post_detail_view_model.dart';
 
@@ -38,11 +38,13 @@ class PostDetailDescriptionSection extends GetWidget<PostDetailViewModel> {
               left: padding,
               right: padding,
             ),
-            child: Text(
-              controller.post.title ?? "",
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+            child: Obx(
+              () => Text(
+                controller.post.value.title ?? "",
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
             ),
           ),
           SizedBox(
@@ -54,7 +56,7 @@ class PostDetailDescriptionSection extends GetWidget<PostDetailViewModel> {
             ),
             child: Obx(
               () => Text(
-                controller.post.content ?? "",
+                controller.post.value.content ?? "",
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       color: AppColors.placeholder,
                     ),

@@ -16,7 +16,9 @@ class HomeViewModel extends GetxController {
     super.onInit();
   }
 
-  void postItemOnTap(PostModel post) => Get.toNamed(AppRoute.postDetail, arguments: {"post": post});
+  void goToCartPage() => Get.toNamed(AppRoute.cart);
+
+  void postItemOnTap(PostModel post) => Get.toNamed(AppRoute.postDetail, arguments: {"postId": post.id});
 
   Future<void> _getPosts() async {
     isLoading.value = true;

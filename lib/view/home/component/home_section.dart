@@ -15,6 +15,12 @@ class HomeSection extends GetWidget<HomeViewModel> {
       () => CustomAppBar(
         automaticallyImplyLeading: false,
         title: "TR Store",
+        actions: [
+          IconButton(
+            onPressed: () => controller.goToCartPage(),
+            icon: const Icon(Icons.shopping_bag),
+          ),
+        ],
         body: Stack(
           children: [
             GridView.builder(

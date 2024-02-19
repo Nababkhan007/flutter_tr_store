@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tr_store/common/constant/constants.dart';
 import 'package:tr_store/view_model/post_detail_view_model.dart';
+import 'package:tr_store/common/widget/network_image_loader.dart';
 import 'package:tr_store/common/widget/custom_slider_indicator.dart';
 import 'package:tr_store/view/post_detail/component/post_detail_app_bar.dart';
 import 'package:tr_store/view/post_detail/component/post_detail_scrollable_sheet.dart';
@@ -31,9 +32,11 @@ class PostDetailSection extends GetWidget<PostDetailViewModel> {
                 controller: controller.pageController,
                 itemCount: 2,
                 itemBuilder: (context, index) {
-                  return Image.network(
-                    controller.post.image ?? "",
-                    fit: BoxFit.cover,
+                  return Obx(
+                    () => NetworkImageLoader(
+                      controller.post.value.image ?? "",
+                      fit: BoxFit.cover,
+                    ),
                   );
                 },
               ),
