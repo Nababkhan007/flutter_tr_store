@@ -16,9 +16,15 @@ class HomeSection extends GetWidget<HomeViewModel> {
         automaticallyImplyLeading: false,
         title: "TR Store",
         actions: [
-          IconButton(
-            onPressed: () => controller.goToCartPage(),
-            icon: const Icon(Icons.shopping_bag),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppDefaults.padding),
+            child: Badge(
+              label: Text("${controller.cartItemCount}"),
+              child: IconButton(
+                onPressed: () => controller.goToCartPage(),
+                icon: const Icon(Icons.shopping_bag),
+              ),
+            ),
           ),
         ],
         body: Stack(
@@ -26,7 +32,7 @@ class HomeSection extends GetWidget<HomeViewModel> {
             GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: controller.isLoading.value ? 1 / 1.5 : 1 / 1.5,
+                childAspectRatio: controller.isLoading.value ? 1 / 1.7 : 1 / 1.7,
               ),
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),

@@ -55,13 +55,23 @@ class HomeCustomItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 8.0),
-              Expanded(
-                child: Text(
-                  "${AppTexts.taka}${post.userId}",
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.black),
-                ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    "${AppTexts.taka}${post.userId}",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.black),
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: IconButton(
+                      onPressed: () => controller.addCartItem(post),
+                      icon: const Icon(Icons.add, color: AppColors.success),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16.0),
             ],

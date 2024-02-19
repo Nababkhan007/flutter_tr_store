@@ -60,8 +60,10 @@ class PostDetailViewModel extends GetxController {
       return;
     }
 
+    bool isMatched = false;
     for (final (index, postItem) in posts.indexed) {
       if (postItem.id == post.value.id) {
+        isMatched = true;
         await SqlHelper.createItem(
             post.value.id!, post.value.thumbnail!, post.value.title!, post.value.content!, post.value.userId!, postItem.quantity! + 1);
         AppUtil.showSnackBar(
@@ -69,16 +71,16 @@ class PostDetailViewModel extends GetxController {
           AppTexts.updatedCartItem,
           leftBarIndicatorColor: AppColors.success,
         );
-        break;
-      } else {
-        await SqlHelper.createItem(post.value.id!, post.value.thumbnail!, post.value.title!, post.value.content!, post.value.userId!, 1);
-        AppUtil.showSnackBar(
-          AppTexts.success,
-          AppTexts.addedCartItem,
-          leftBarIndicatorColor: AppColors.success,
-        );
-        break;
       }
+    }
+
+    if (!isMatched) {
+      await SqlHelper.createItem(post.value.id!, post.value.thumbnail!, post.value.title!, post.value.content!, post.value.userId!, 1);
+      AppUtil.showSnackBar(
+        AppTexts.success,
+        AppTexts.addedCartItem,
+        leftBarIndicatorColor: AppColors.success,
+      );
     }
     _getItems();
   }
